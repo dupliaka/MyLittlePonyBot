@@ -1,0 +1,12 @@
+1. Setup environment
+
+CONDA:
+1.  Go to external libs and check which actually env(library root) are you using
+2.  Go to Anaconda prompt and activate it (to see others type conda info --envs) by activate untitled2
+3.  Install side packages via pip/pip3  pip install pytelegrambotapi
+4.  Conda list will show all avalible packages
+
+2. Setup bot in telegram by botfather
+    1. Create botname
+    2. Create username @MeineKleinePferdBot
+
