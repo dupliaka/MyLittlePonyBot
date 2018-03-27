@@ -22,6 +22,7 @@ def publish_pony(message):
 
 @bot.message_handler(commands=['start'])
 def handle_start(message):
+    publish_pony(message)
     schedule.every().hour.do(publish_pony, message)
 
     while True:
