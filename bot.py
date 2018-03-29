@@ -7,6 +7,7 @@ import config
 import ponyImgParser
 
 bot = telebot.TeleBot(config.token)
+lastUrl = ""
 
 
 @bot.message_handler(commands=['help'])
@@ -17,14 +18,16 @@ def handle_start_help(message):
 
 
 def publish_pony(message):
-    bot.send_photo(message.chat.id, ponyImgParser.get_pony_img_url())
+    newUrl = ponyImgParser.get_pony_img_url()
+    global lastUrl
+    if lastUrl != newUrl:
+        bot.send_photo(message.chat.id, newUrl)
+        lastUrl = newUrl
 
 
 @bot.message_handler(commands=['start'])
 def handle_start(message):
-    publish_pony(message)
     schedule.every().hour.do(publish_pony, message)
-
     while True:
         schedule.run_pending()
         time.sleep(1)
