@@ -21,6 +21,7 @@ def publish_pony(message):
     newUrl = ponyImgParser.get_pony_img_url()
     global lastUrl
     if lastUrl != newUrl:
+        print("Already published pony! Lets wait for new one...")
         bot.send_photo(message.chat.id, newUrl)
         lastUrl = newUrl
 
