@@ -10,6 +10,7 @@ def get_pony_img_url():
         data = requests.get("https://pikabu.ru/community/mlp")
     except (requests.RequestException, requests.ReadTimeout, ssl.SSLError)as e:
         print('ConnectionError = ' + str(e))
+
         time.sleep(180)
         get_pony_img_url()
     bsData = bs4.BeautifulSoup(data.text, "html.parser")
